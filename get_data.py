@@ -21,6 +21,8 @@ def get_time_series(symbols, key, dates):
         time_series[symbol] = dict
     return time_series
 
+with open('config.txt') as f:
+    api_key = f.readline()
 def get_portfolio_value(quantities, dates):
     time_series = get_time_series(list(quantities.keys()), '9AYSCICNWDM0RPZS', dates)
     dict = {}

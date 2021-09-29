@@ -10,15 +10,17 @@ To run just call `python plotter.py` and open `http://127.0.0.1:8050/`
 
 ## Who Did What?
 
-* Raymond: Worked on pulling stock data from alphavantage.  Added dash to display the plotly component.
+* Raymond: Worked on pulling stock data from alphavantage. Added dash to display the plotly component.
 
-* Eddie: Used plotly to display stock portfolio value over time.
+* Eddie: Used plotly to display stock portfolio value over time. Created portfolio function.
+
+Although we worked on different parts, we again made sure to pair program for some of it and helped each with bugs and issues. We also went through the tutorials together.
 
 ## What you learned
 
 Learned how to use plotly to display interactive graphs.  Relates to potential project of displaying salary info as well as projected bonus growth or other statistics.
 
-Learned how to use Dash to deploy a web server that can display these plotly graphs.  Would be useful and avoids having to use Flask.
+Learned how to use Dash to deploy a web server that can display these plotly graphs.  Would be useful and avoids having to use Flask. This is generally helpful for most web apps that want to do analytics and display it through internal dashboards.
 
 ### Things that didn't work:
 
