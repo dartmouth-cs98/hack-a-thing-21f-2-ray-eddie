@@ -1,7 +1,10 @@
 import requests
 import pandas as pd
 
+#Gets the time series data from symbols, and dates
 def get_time_series(symbols, key, dates):
+    time_series = {}
+
     for symbol in symbols:
         # Credit to https://www.alphavantage.co/documentation/
         # Gets time series data from alphavantage
@@ -11,8 +14,15 @@ def get_time_series(symbols, key, dates):
         
         dict = {}
         for date in dates:
-            dict[date] = data['Time Series (Daily)'][date]['4. close']
-        df = pd.Series(dict).to_frame()
-        print(df)
+            dict[date] = float(data['Time Series (Daily)'][date]['4. close'])
+        time_series[symbol] = dict
+    return time_series
 
-get_time_series(['IBM'], '9AYSCICNWDM0RPZS', ['2021-09-28', '2021-09-27'])
+def get_portfolio_value(quantities, dates):
+    time_series = get_time_series(list(quantities.keys()), '9AYSCICNWDM0RPZS', dates)
+    val = 0
+    for symbol, quantity in quantities.items():
+        val += (time_series[symbol][dates[-1]] - time_series[symbol][dates[0]]) * quantity
+    return val
+
+print(get_portfolio_value({'IBM' : 1}, ['2021-09-28', '2021-09-27']))
