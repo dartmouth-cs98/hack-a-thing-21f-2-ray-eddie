@@ -24,7 +24,7 @@ def get_time_series(symbols, key, dates):
 with open('config.txt') as f:
     api_key = f.readline()
 def get_portfolio_value(quantities, dates):
-    time_series = get_time_series(list(quantities.keys()), '9AYSCICNWDM0RPZS', dates)
+    time_series = get_time_series(list(quantities.keys()), api_key, dates)
     dict = {}
     for date in dates:
         val = 0
@@ -34,5 +34,3 @@ def get_portfolio_value(quantities, dates):
         dict[date] = val
     time_series['Portfolio'] = dict
     return time_series
-
-# print(get_time_series(['IBM'], '9AYSCICNWDM0RPZS',['2021-09-28', '2021-09-27']))
